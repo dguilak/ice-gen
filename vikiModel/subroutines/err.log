@@ -1,0 +1,255 @@
+Unknown vendor: "gfortran"
+running build
+running config_cc
+unifing config_cc, config, build_clib, build_ext, build commands --compiler options
+running config_fc
+unifing config_fc, config, build_clib, build_ext, build commands --fcompiler options
+running build_src
+building extension "ice-Ih-gen" sources
+f2py options: []
+f2py:> /tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c
+creating /tmp/tmpFZbIc1
+creating /tmp/tmpFZbIc1/src.linux-i686-2.6
+Reading fortran codes...
+	Reading file 'ice-Ih-gen.f' (format:fix,strict)
+Post-processing...
+	Block: ice-Ih-gen
+			Block: findstru
+			Block: build
+			Block: cons
+			Block: trans
+			Block: anal
+			Block: hydro
+			Block: ggubs
+			Block: dist
+			Block: writ
+			Block: epot
+			Block: enedip
+Post-processing (stage 2)...
+Building modules...
+	Building module "ice-Ih-gen"...
+		Constructing wrapper function "build"...
+		  build()
+		Constructing wrapper function "cons"...
+		  cons()
+		Constructing wrapper function "trans"...
+		  trans(iho)
+		Constructing wrapper function "anal"...
+		  anal()
+		Constructing wrapper function "hydro"...
+		  hydro()
+		Constructing wrapper function "ggubs"...
+		  ggubs(dseed,r,[nr])
+		Constructing wrapper function "dist"...
+		  dist(nm,k1,nmm,k2,d)
+		Constructing wrapper function "writ"...
+		  writ(ep1,dip,[n4])
+		Constructing wrapper function "epot"...
+		  epot()
+		Constructing wrapper function "enedip"...
+		  enedip(ep)
+		Constructing COMMON block support for "numbs"...
+		  nmol,natm,ndim
+		Constructing COMMON block support for "parambo"...
+		  side
+		Constructing COMMON block support for "unitc"...
+		  aerg,aev,acm1,atem,akm,amev,amu,ams,atim,aps
+		Constructing COMMON block support for "xmmmmm"...
+		  xmas,xmass,xiner,xmol
+		Constructing COMMON block support for "param6"...
+		  ksha
+		Constructing COMMON block support for "param5"...
+		  roo,rfcc,cutne,ctn2
+		Constructing COMMON block support for "param3"...
+		  xredi,xdis2,xdee
+		Constructing COMMON block support for "param2"...
+		  chap,a12,c6,fam,rhh,rsu,pi,cut2,cutt,dipli
+		Constructing COMMON block support for "param1"...
+		  roh,ang,qh,ao2,co2,rom,qmm,qmh,qhh,ff,ff12,ddpl
+		Constructing COMMON block support for "xlattt"...
+		  xlat
+		Constructing COMMON block support for "param7"...
+		  cchap,rroh,rrsu,rrhh
+		Constructing COMMON block support for "param4"...
+		  xinv,corot
+		Constructing COMMON block support for "nnneigs"...
+		  nei,nne
+		Constructing COMMON block support for "xnnneigs"...
+		  ve,xnei
+		Constructing COMMON block support for "xladip"...
+		  xld,dipm
+		Constructing COMMON block support for "catttts"...
+		  icat
+		Constructing COMMON block support for "pottts"...
+		  eppo,eppp,ehh,eldd
+	Wrote C/API module "ice-Ih-gen" to file "/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c"
+	Fortran 77 wrappers are saved to "/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-gen-f2pywrappers.f"
+  adding '/tmp/tmpFZbIc1/src.linux-i686-2.6/fortranobject.c' to sources.
+  adding '/tmp/tmpFZbIc1/src.linux-i686-2.6' to include_dirs.
+copying /usr/lib/python2.6/dist-packages/numpy/f2py/src/fortranobject.c -> /tmp/tmpFZbIc1/src.linux-i686-2.6
+copying /usr/lib/python2.6/dist-packages/numpy/f2py/src/fortranobject.h -> /tmp/tmpFZbIc1/src.linux-i686-2.6
+  adding '/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-gen-f2pywrappers.f' to sources.
+running build_ext
+new_compiler returns distutils.unixccompiler.UnixCCompiler
+customize UnixCCompiler
+customize UnixCCompiler using build_ext
+********************************************************************************
+distutils.unixccompiler.UnixCCompiler
+linker_exe    = ['gcc', '-pthread']
+compiler_so   = ['gcc', '-pthread', '-fno-strict-aliasing', '-DNDEBUG', '-g', '-fwrapv', '-O2', '-Wall', '-Wstrict-prototypes', '-fPIC']
+archiver      = ['ar', '-cr']
+preprocessor  = ['gcc', '-pthread', '-E']
+linker_so     = ['gcc', '-pthread', '-shared', '-Wl,-O1', '-Wl,-Bsymbolic-functions']
+compiler_cxx  = ['g++', '-pthread']
+ranlib        = None
+compiler      = ['gcc', '-pthread', '-fno-strict-aliasing', '-DNDEBUG', '-g', '-fwrapv', '-O2', '-Wall', '-Wstrict-prototypes']
+libraries     = []
+library_dirs  = []
+include_dirs  = ['/usr/include/python2.6']
+********************************************************************************
+customize Gnu95FCompiler
+find_executable('gfortran')
+Found executable /usr/bin/gfortran
+exec_command(['/usr/bin/gfortran', '--version'],)
+Retaining cwd: /home/daniel/db/Dropbox/NESH/vikiModel
+_preserve_environment([])
+_update_environment(...)
+_exec_command_posix(...)
+Running os.system('( /usr/bin/gfortran --version ; echo $? > /tmp/tmpw7mmrB/FRyYWm ) > /tmp/tmpw7mmrB/n6PlWb 2>&1')
+_update_environment(...)
+exec_command(['/usr/bin/gfortran', '-Wall', '-ffixed-form', '-fno-second-underscore', '-fPIC', '-O3', '-funroll-loops', '-print-libgcc-file-name'],)
+Retaining cwd: /home/daniel/db/Dropbox/NESH/vikiModel
+_preserve_environment([])
+_update_environment(...)
+_exec_command_posix(...)
+Running os.system('( /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops -print-libgcc-file-name ; echo $? > /tmp/tmpw7mmrB/4kLLHd ) > /tmp/tmpw7mmrB/lVYvLt 2>&1')
+_update_environment(...)
+customize Gnu95FCompiler using build_ext
+********************************************************************************
+numpy.distutils.fcompiler.gnu.Gnu95FCompiler
+version_cmd     = ['/usr/bin/gfortran', '--version']
+compiler_fix    = ['/usr/bin/gfortran', '-Wall', '-ffixed-form', '-fno-second-underscore', '-Wall', '-fno-second-underscore', '-fPIC', '-O3', '-funroll-loops']
+ranlib          = ['/usr/bin/gfortran']
+linker_exe      = ['/usr/bin/gfortran', '-Wall', '-Wall']
+archiver        = ['/usr/bin/gfortran', '-cr']
+compiler_f77    = ['/usr/bin/gfortran', '-Wall', '-ffixed-form', '-fno-second-underscore', '-fPIC', '-O3', '-funroll-loops']
+linker_so       = ['/usr/bin/gfortran', '-Wall', '-Wall', '-shared']
+compiler_f90    = ['/usr/bin/gfortran', '-Wall', '-fno-second-underscore', '-fPIC', '-O3', '-funroll-loops']
+version         = LooseVersion ('4.4.4-14')
+libraries       = ['gfortran']
+library_dirs    = []
+object_switch   = '-o '
+compile_switch  = '-c'
+include_dirs    = ['/usr/include/python2.6']
+********************************************************************************
+building 'ice-Ih-gen' extension
+compiling C sources
+C compiler: gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
+
+creating /tmp/tmpFZbIc1/tmp
+creating /tmp/tmpFZbIc1/tmp/tmpFZbIc1
+creating /tmp/tmpFZbIc1/tmp/tmpFZbIc1/src.linux-i686-2.6
+compile options: '-I/tmp/tmpFZbIc1/src.linux-i686-2.6 -I/usr/lib/python2.6/dist-packages/numpy/core/include -I/usr/include/python2.6 -c'
+gcc: /tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c
+exec_command(['gcc', '-pthread', '-fno-strict-aliasing', '-DNDEBUG', '-g', '-fwrapv', '-O2', '-Wall', '-Wstrict-prototypes', '-fPIC', '-I/tmp/tmpFZbIc1/src.linux-i686-2.6', '-I/usr/lib/python2.6/dist-packages/numpy/core/include', '-I/usr/include/python2.6', '-c', '/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c', '-o', '/tmp/tmpFZbIc1/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.o'],)
+Retaining cwd: /home/daniel/db/Dropbox/NESH/vikiModel
+_preserve_environment([])
+_update_environment(...)
+_exec_command_posix(...)
+Running os.system('( gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/tmp/tmpFZbIc1/src.linux-i686-2.6 -I/usr/lib/python2.6/dist-packages/numpy/core/include -I/usr/include/python2.6 -c /tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c -o /tmp/tmpFZbIc1/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.o ; echo $? > /tmp/tmpw7mmrB/lJFZ6W ) 2>&1 | tee /tmp/tmpw7mmrB/yL6YZb ')
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:21: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:22: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: In function ‘int_from_pyobj’:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘ice’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: (Each undeclared identifier is reported only once
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: for each function it appears in.)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘Ih’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘gen_error’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: In function ‘double_from_pyobj’:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘ice’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘Ih’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘gen_error’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: At top level:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:204: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:209: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:265: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:270: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:326: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:332: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:395: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:400: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:456: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:461: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:517: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:526: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:619: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:629: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:720: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:729: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:822: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:827: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:883: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:889: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘f2py_rout_ice’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘Ih’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘gen_build’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘doc_f2py_rout_ice’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1284: error: ‘gen_cons’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1285: error: ‘gen_trans’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1286: error: ‘gen_anal’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1287: error: ‘gen_hydro’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1288: error: ‘gen_ggubs’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1289: error: ‘gen_dist’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1290: error: ‘gen_writ’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1291: error: ‘gen_epot’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1292: error: ‘gen_enedip’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1303: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+_update_environment(...)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:21: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:22: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: In function ‘int_from_pyobj’:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘ice’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: (Each undeclared identifier is reported only once
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: for each function it appears in.)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘Ih’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:130: error: ‘gen_error’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: In function ‘double_from_pyobj’:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘ice’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘Ih’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:169: error: ‘gen_error’ undeclared (first use in this function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c: At top level:
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:204: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:209: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:265: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:270: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:326: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:332: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:395: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:400: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:456: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:461: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:517: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:526: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:619: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:629: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:720: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:729: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:822: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:827: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:883: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:889: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘f2py_rout_ice’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘Ih’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘gen_build’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1283: error: ‘doc_f2py_rout_ice’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1284: error: ‘gen_cons’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1285: error: ‘gen_trans’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1286: error: ‘gen_anal’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1287: error: ‘gen_hydro’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1288: error: ‘gen_ggubs’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1289: error: ‘gen_dist’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1290: error: ‘gen_writ’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1291: error: ‘gen_epot’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1292: error: ‘gen_enedip’ undeclared here (not in a function)
+/tmp/tmpFZbIc1/src.linux-i686-2.6/ice-Ih-genmodule.c:1303: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘-’ token
+removing /tmp/tmpw7mmrB
