@@ -1,7 +1,0 @@
-Compiled using f2py. ice-I?-gen.f has been authored by Viki Buch.
-
-To use in python:
-
-import iceIh
-
-Then it can be called by using iceIh.<method_name>.
