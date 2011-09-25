@@ -26,26 +26,26 @@ c see also G. Kroes Sur Sci 275, 365 (1992)
 c TIPS2 potential
 c recording structures on fort.9 formatted file
 c fort.3 long log, fort.33 short log
-	program findstru
-	implicit real*8(a-h,o-z)
-	write(3,*)'program to calculate different periodic structures'
-	write(3,*)'possible for ice Ih, given unit cell'
-	write(3,*)'E-dif with respect to periodic'
-c set constants relevant to water
-	call cons
-c build piece of O-structure
-	call build
-c analysis of structure
-	call anal
-c generate possible structures by
-c distributing  hydrogens in between OO
-	call hydro
-cc write graphic file for piece of H2O structure
+c	program findstru
+c	implicit real*8(a-h,o-z)
+c	write(3,*)'program to calculate different periodic structures'
+c	write(3,*)'possible for ice Ih, given unit cell'
+c	write(3,*)'E-dif with respect to periodic'
+cc set constants relevant to water
+c	call cons
+cc build piece of O-structure
+c	call build
+cc analysis of structure
+c	call anal
+cc generate possible structures by
+cc distributing  hydrogens in between OO
+c	call hydro
+ccc write graphic file for piece of H2O structure
 c	call trans(2)
 cc write restart file for trajectory
-c	call writ
-	stop
-	end
+cc	call writ
+c	stop
+c	end
 	subroutine build
 c building a piece bound by hexagonal surfaces
 	implicit real*8(a-h,o-z)
@@ -162,7 +162,8 @@ c	   if(nm.lt.6) write(99,*)'nm=',nm,(xlat(nm,k)*ams,k=1,3)
 6	continue
 	return
 	end
-	subroutine cons
+	subroutine cons(aroo,acutt)
+cf2py   intent(in) aroo,acutt
 	implicit real*8(a-h,o-z)
 c prepare data in a.u. for entire program
 	common /unitc/ aerg,aev,acm1,atem,akm,amev,amu,ams,atim,aps
@@ -229,8 +230,10 @@ c "dipole moment" at center of bond
 	chap(3,2)=qmh
 	chap(2,3)=qmh
 	roo=2.75/ams
-	print*,'roo?'
-	read*,roo
+cDG     Make the COMMON the arg roo.
+        roo=aroo
+c	print*,'roo?'
+c	read*,roo
 	write(3,*)'roo=',roo
 	roo=roo/ams
 c O-H distance
@@ -294,9 +297,10 @@ c	dipli=qh*(0.5*roo-roh)*qh*2*rsu2
 c cutne is cutoff for nearest neighbor distance, ctn2 - squared
 	cutne=(roo+0.2)
 	ctn2=cutne**2
-	print*,'cutoff for potential [A]?'
-	read*,cutt
-	write(3,99)cutt
+c	print*,'cutoff for potential [A]?'
+c	read*,cutt
+c	write(3,99)cutt
+        cutt=acutt
 99	format('cutoff dist.[A]:',f15.3)
 	cutt=cutt/ams
 	cut2=cutt**2
