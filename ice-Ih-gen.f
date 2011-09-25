@@ -46,7 +46,8 @@ cc write restart file for trajectory
 cc	call writ
 c	stop
 c	end
-	subroutine build
+	subroutine build(anx, any, anz)
+cf2py   intent(in) anx, any, anz
 c building a piece bound by hexagonal surfaces
 	implicit real*8(a-h,o-z)
 c nmoll max num of water molecules
@@ -82,11 +83,14 @@ c lattice vectors
 	print*,'unit vectors in ams:'
 	print*,(vv(k)*ams,k=1,3)
 	write(3,*)'a=',a*ams,' vv=',(vv(k)*ams,k=1,3)
-700	print*,'nx,ny,nz?'
-	print*,'nz=#hex layers must be multiple of 2'
+c700	print*,'nx,ny,nz?'
+c	print*,'nz=#hex layers must be multiple of 2'
 c	print*,'nx probably should be > 2'
 c number of repeating units in each direction
-	read*,nx,ny,nz
+        nx=anx
+        ny=any
+        nz=anz
+c	read*,nx,ny,nz
 c	if(amin0(nx,ny,nz).lt.2)then
 c	   print*,'too small nx or ny or nz'
 c	   stop
@@ -95,9 +99,9 @@ c	end if
 	side(2)=ny*vv(2)
 	side(3)=nz*vv(3)
 	print*,'sides of box A',side(1)*ams,side(2)*ams,side(3)*ams
-	print*,'satisfied? enter 0'
-	read*,isat
-	if(isat.ne.0)go to 700
+c	print*,'satisfied? enter 0'
+c	read*,isat
+c	if(isat.ne.0)go to 700
 	write(3,*)'nx,ny,nz',nx,ny,nz
 	write(3,*)'sides of box A',side(1)*ams,side(2)*ams,side(3)*ams
 c location of atoms in surface unit cell
@@ -443,7 +447,10 @@ c check tetrahedrality of bonds
 12	continue
 	return
 	end
-	subroutine hydro
+     	subroutine hydro(adseed, animp, anmcma, amaxt,
+     *  aisto, acri1, acri2)
+c If you want to continue, put a nonblank char in col 6.
+cf2py   intent(in) adseed, animp, anmcma, amaxt, aisto, acri1, acri2
 c performs searches for different structures obeying ice rules
 c spread hydrogens at random in between pairs of OO
 c according to ice rules
@@ -497,17 +504,23 @@ c to compare to new structures & verify if new struct. obtained
 c dip is dipole vector, last component 4 is abs size
 c dipole calculated as vectorial sum in units of molecular
 c dipole, set to unity along the bisector
-	print*,'dseed?'
-	read*,dseed
+c	print*,'dseed?'
+c       read*,dseed
+        dseed=adseed
 	write(3,*)'dseed=',dseed
-	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
-	read*,nimp,nmcma
-	print*,'# max tries?'
-	read*,maxt
-	print*,'after how many futile attempts to stop?'
-	read*,isto
-	print*,'e-,dip. identity criterions?'
-	read*,cri1,cri2
+c	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
+c	read*,nimp,nmcma
+        nimp=animp
+c	print*,'# max tries?'
+        maxt=amaxt
+c	read*,maxt
+c	print*,'after how many futile attempts to stop?'
+        isto=aisto
+c	read*,isto
+c	print*,'e-,dip. identity criterions?'
+        cri1=acri1
+        cri2=acri2
+c	read*,cri1,cri2
 	write(3,*)'# improvement rounds:',nimp
 	write(3,*)'# mc steps in a round',nmcma
 	write(3,*)'stopping criterion: futile tries:',isto
