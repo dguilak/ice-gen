@@ -15,3 +15,7 @@ iceIh.anal()
 #cri1 (e-)
 #cri2 (dip. identity criterions)
 iceIh.hydro(float(1), 1000, 10000, 400, 400, float(0.0001), float(0.0001))
+#trans writes graphic file for oxygen lattice
+#if 1 = oxygens only
+#if 2 include hydrogens.
+iceIh.trans(2)

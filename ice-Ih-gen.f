@@ -46,8 +46,8 @@ cc write restart file for trajectory
 cc	call writ
 c	stop
 c	end
-	subroutine build(anx, any, anz)
-cf2py   intent(in) anx, any, anz
+	subroutine build(nx_a, ny_a, nz_a)
+cf2py   intent(in) nx_a, ny_a, nz_a
 c building a piece bound by hexagonal surfaces
 	implicit real*8(a-h,o-z)
 c nmoll max num of water molecules
@@ -87,9 +87,9 @@ c700	print*,'nx,ny,nz?'
 c	print*,'nz=#hex layers must be multiple of 2'
 c	print*,'nx probably should be > 2'
 c number of repeating units in each direction
-        nx=anx
-        ny=any
-        nz=anz
+        nx=nx_a
+        ny=ny_a
+        nz=nz_a
 c	read*,nx,ny,nz
 c	if(amin0(nx,ny,nz).lt.2)then
 c	   print*,'too small nx or ny or nz'
@@ -166,8 +166,8 @@ c	   if(nm.lt.6) write(99,*)'nm=',nm,(xlat(nm,k)*ams,k=1,3)
 6	continue
 	return
 	end
-	subroutine cons(aroo,acutt)
-cf2py   intent(in) aroo,acutt
+	subroutine cons(roo_a,cutt_a)
+cf2py   intent(in) roo_a,cutt_a
 	implicit real*8(a-h,o-z)
 c prepare data in a.u. for entire program
 	common /unitc/ aerg,aev,acm1,atem,akm,amev,amu,ams,atim,aps
@@ -235,7 +235,7 @@ c "dipole moment" at center of bond
 	chap(2,3)=qmh
 	roo=2.75/ams
 cDG     Make the COMMON the arg roo.
-        roo=aroo
+        roo=roo_a
 c	print*,'roo?'
 c	read*,roo
 	write(3,*)'roo=',roo
@@ -304,13 +304,14 @@ c cutne is cutoff for nearest neighbor distance, ctn2 - squared
 c	print*,'cutoff for potential [A]?'
 c	read*,cutt
 c	write(3,99)cutt
-        cutt=acutt
+        cutt=cutt_a
 99	format('cutoff dist.[A]:',f15.3)
 	cutt=cutt/ams
 	cut2=cutt**2
 	return
 	end
-	subroutine trans(iho)
+	subroutine trans(iho_a)
+cf2py   intent(in) iho_a
 	implicit real*8(a-h,o-z)
 c write graphic file for oxygen lattice
 c if iho=1 oxygens only
@@ -327,6 +328,7 @@ c =2 include hydrogens
 	write(99,778)
 778	format('*')
 c CHARMM COORDINATES
+        iho=iho_a
 	na=nmol
 	iaa=1
 	if(iho.eq.2)then
@@ -447,10 +449,10 @@ c check tetrahedrality of bonds
 12	continue
 	return
 	end
-     	subroutine hydro(adseed, animp, anmcma, amaxt,
-     *  aisto, acri1, acri2)
+     	subroutine hydro(dseed_a, nimp_a, nmcma_a, maxt_a,
+     *  isto_a, cri1_a, cri2_a)
 c If you want to continue, put a nonblank char in col 6.
-cf2py   intent(in) adseed, animp, anmcma, amaxt, aisto, acri1, acri2
+cf2py   intent(in) dseed_a, nimp_a, nmcma_a, maxt_a, isto_a, cri1_a, cri2_a
 c performs searches for different structures obeying ice rules
 c spread hydrogens at random in between pairs of OO
 c according to ice rules
@@ -506,20 +508,20 @@ c dipole calculated as vectorial sum in units of molecular
 c dipole, set to unity along the bisector
 c	print*,'dseed?'
 c       read*,dseed
-        dseed=adseed
+        dseed=dseed_a
 	write(3,*)'dseed=',dseed
 c	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
 c	read*,nimp,nmcma
-        nimp=animp
+        nimp=nimp_a
 c	print*,'# max tries?'
-        maxt=amaxt
+        maxt=maxt_a
 c	read*,maxt
 c	print*,'after how many futile attempts to stop?'
-        isto=aisto
+        isto=isto_a
 c	read*,isto
 c	print*,'e-,dip. identity criterions?'
-        cri1=acri1
-        cri2=acri2
+        cri1=cri1_a
+        cri2=cri2_a
 c	read*,cri1,cri2
 	write(3,*)'# improvement rounds:',nimp
 	write(3,*)'# mc steps in a round',nmcma
