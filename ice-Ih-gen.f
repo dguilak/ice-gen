@@ -388,8 +388,7 @@ c locate nearest neighbors
 	    	do 10 k=1,3
 		   ve(k)=xlat(nm,k,1)-xlat(nmm,k,1)
 c		   if(k.eq.3) go to 10
-		   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-		   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+		   call pbc(ve, side, k)
 10	  	continue
 	   	d2=ve(1)**2+ve(2)**2+ve(3)**2
 	        if(d2.lt.ctn2)then
@@ -859,8 +858,7 @@ c min. image distance between atoms
 	i2=(k2-1)*3
 	do 10 k=1,3
 	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
-	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+	   call pbc(ve, side, k)
 10	continue
 	d=sqrt(ve(1)**2+ve(2)**2+ve(3)**2)
 	return
@@ -1068,8 +1066,8 @@ c402	       y2(i)=xld(nd,i)
 c find y11 - nearest image km location
 	    do 4302 k=1,3
 		ve(k)=y11(k)-y2(k)
-		if(ve(k).gt.side(k)*0.5d0)y11(k)=y11(k)-side(k)
-		if(ve(k).lt.-side(k)*0.5d0)y11(k)=y11(k)+side(k)
+c   ##TRYING NEW METHOD
+		call pbc(ve, side, k)
 4302	    continue
 c   go over all unit cells
 	    kd=iabs(km2-km)
@@ -1116,5 +1114,13 @@ c	ep=ep-xeli*nmol
 c rescale to represent correct dipole-dipole interaction
 	ep=ep*dipli
 c	ep=ep/nmol
+	return
+	end
+	
+	subroutine pbc(ve, side, k)
+	dimension ve(3)
+	dimension side(3)
+	if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
+	if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
 	return
 	end
