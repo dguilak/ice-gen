@@ -1116,8 +1116,10 @@ c rescale to represent correct dipole-dipole interaction
 c	ep=ep/nmol
 	return
 	end
-	
+c This subroutine replaces the periodic boundary condition logic
+c found throughout the code so that it may be easily changed later.	
 	subroutine pbc(ve, side, k)
+c	Dimensions have to be declared again if arrays are being passed in.
 	dimension ve(3)
 	dimension side(3)
 	if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
