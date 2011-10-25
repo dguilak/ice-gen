@@ -102,6 +102,7 @@ c	end if
 c	print*,'satisfied? enter 0'
 c	read*,isat
 c	if(isat.ne.0)go to 700
+	write(9,*)'test test one two test one two'
 	write(3,*)'nx,ny,nz',nx,ny,nz
 	write(3,*)'sides of box A',side(1)*ams,side(2)*ams,side(3)*ams
 c location of atoms in surface unit cell

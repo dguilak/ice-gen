@@ -18,4 +18,6 @@ iceIh.hydro(float(1), 1000, 10000, 400, 400, float(0.0001), float(0.0001))
 #trans writes graphic file for oxygen lattice
 #if 1 = oxygens only
 #if 2 include hydrogens.
+#write(99,777) *not* working here.
+#writ needs to get called as well!
 iceIh.trans(2)
