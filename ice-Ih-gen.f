@@ -449,10 +449,11 @@ c check tetrahedrality of bonds
 12	continue
 	return
 	end
-     	subroutine hydro(dseed_a, nimp_a, nmcma_a, maxt_a,
-     *  isto_a, cri1_a, cri2_a)
+	subroutine hydro
+c     	subroutine hydro(dseed_a, nimp_a, nmcma_a, maxt_a,
+c     *  isto_a, cri1_a, cri2_a)
 c If you want to continue, put a nonblank char in col 6.
-cf2py   intent(in) dseed_a, nimp_a, nmcma_a, maxt_a, isto_a, cri1_a, cri2_a
+c intent(in) dseed_a, nimp_a, nmcma_a, maxt_a, isto_a, cri1_a, cri2_a
 c performs searches for different structures obeying ice rules
 c spread hydrogens at random in between pairs of OO
 c according to ice rules
@@ -506,23 +507,24 @@ c to compare to new structures & verify if new struct. obtained
 c dip is dipole vector, last component 4 is abs size
 c dipole calculated as vectorial sum in units of molecular
 c dipole, set to unity along the bisector
-c	print*,'dseed?'
-c       read*,dseed
-        dseed=dseed_a
+	print*,'dseed?'
+        read*,dseed
+	write(3,*) 'Hydro!'
+c        dseed=dseed_a
 	write(3,*)'dseed=',dseed
-c	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
-c	read*,nimp,nmcma
-        nimp=nimp_a
-c	print*,'# max tries?'
-        maxt=maxt_a
-c	read*,maxt
-c	print*,'after how many futile attempts to stop?'
-        isto=isto_a
-c	read*,isto
-c	print*,'e-,dip. identity criterions?'
-        cri1=cri1_a
-        cri2=cri2_a
-c	read*,cri1,cri2
+	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
+	read*,nimp,nmcma
+c       nimp=nimp_a
+	print*,'# max tries?'
+c       maxt=maxt_a
+	read*,maxt
+	print*,'after how many futile attempts to stop?'
+c       isto=isto_a
+	read*,isto
+	print*,'e-,dip. identity criterions?'
+c       cri1=cri1_a
+c       cri2=cri2_a
+	read*,cri1,cri2
 	write(3,*)'# improvement rounds:',nimp
 	write(3,*)'# mc steps in a round',nmcma
 	write(3,*)'stopping criterion: futile tries:',isto
@@ -627,8 +629,8 @@ c with prob. 0.5
 c failed attempt
 	nfail=nfail+1
 	nfa1=nfa1+1
-c	write(3,*)'failed to converge,nfail=',nfail
-c	print*,'failed to converge'
+	write(3,*)'failed to converge,nfail=',nfail
+	print*,'failed to converge'
 	if(nfail.lt.isto.and.ntry.lt.maxt)go to 5555
 	write(3,*)'program finished,nfail=',nfail
 	print*,'program finished,nfail=',nfail
@@ -740,6 +742,7 @@ c	epo(nst,2)=eh1
 	epo(nst,2)=eld1
 	epo(nst,3)=ed1
 	epo(nst,4)=dip(4)
+	write(3,*) 'writing to 33'
 	write(33,3334)ep1,eld1,ed1,dip(4),icat,nst
 	close (33)
 	open(file='fort.33',form='formatted',status='old',
@@ -874,6 +877,7 @@ c see subroutin hydro
 	common/numbs/nmol,natm,ndim
 	common/parambo/side(3)
 	dimension dip(n4)
+	write(3,*) "made it to hydro!"
 	write(9,*)nmol,ep1,(dip(k),k=1,4),(side(k),k=1,3)
 	do 1 nm=1,nmol
 	   write(9,*)(xlat(nm,k,1),k=1,9)
