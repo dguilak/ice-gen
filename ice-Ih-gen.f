@@ -838,11 +838,14 @@ c min. image distance between atoms
 	dimension ve(3)
 	i1=(k1-1)*3
 	i2=(k2-1)*3
-	do 10 k=1,3
-	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
-	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
-10	continue
+c	####PBC#####
+	print*, 'CALLING PBC!'
+	call pbc(xlat, nmoll, side, i1, i2)
+c	do 10 k=1,3
+c	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
+c	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
+c	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+c10	continue
 	d=sqrt(ve(1)**2+ve(2)**2+ve(3)**2)
 	return
 	end
@@ -1102,12 +1105,35 @@ c	ep=ep/nmol
 
 c This subroutine replaces the periodic boundary condition logic
 c found throughout the code so that it may be easily changed later.	
-	subroutine pbc(xlatt, nmoll, side, i1=0, i2=0)
+	subroutine pbc(xlat, nmoll, side, ve, i1, i2)
 	implicit real*8(a-h,o-z)
-	dimension xlatt (nmoll, *)
+	dimension xlat (nmoll, 9, 2)
+	dimension side(3)
+	dimension ve(3)
+	optional i1, i2
+	
+	if (present(i1)) then
+		i1op = i1
+	else
+		i1op = 0
+	end if
 
-	if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-	if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+	if (present(i2)) then
+		i2op = i2
+	else
+		i2op = 0
+	end if
+
+	print*, 'PBC has nmoll: ', nmoll
+	print*, 'PBC has i1, i2: ', i1, i2
+
+	do k=1,3
+	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
+	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
+	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+	continue
+	end do
+
 	return
 	end
 
