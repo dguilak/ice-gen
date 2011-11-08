@@ -86,11 +86,14 @@ c lattice vectors
 	print*,'nz=#hex layers must be multiple of 2'
 c	print*,'nx probably should be > 2'
 c number of repeating units in each direction
-	read*,nx,ny,nz
-c	if(amin0(nx,ny,nz).lt.2)then
-c	   print*,'too small nx or ny or nz'
-c	   stop
-c	end if
+c	read*,nx,ny,nz
+	nx = 3
+	ny = 3
+	nz = 4
+	if(amin0(nx,ny,nz).lt.2)then
+	   print*,'too small nx or ny or nz'
+	   stop
+	end if
 	side(1)=nx*vv(1)
 	side(2)=ny*vv(2)
 	side(3)=nz*vv(3)
@@ -229,8 +232,9 @@ c "dipole moment" at center of bond
 	chap(3,2)=qmh
 	chap(2,3)=qmh
 	roo=2.75/ams
-	print*,'roo?'
-	read*,roo
+c	print*,'roo?'
+c	read*,roo
+	roo = 2.75
 	write(3,*)'roo=',roo
 	roo=roo/ams
 c O-H distance
@@ -294,8 +298,9 @@ c	dipli=qh*(0.5*roo-roh)*qh*2*rsu2
 c cutne is cutoff for nearest neighbor distance, ctn2 - squared
 	cutne=(roo+0.2)
 	ctn2=cutne**2
-	print*,'cutoff for potential [A]?'
-	read*,cutt
+c	print*,'cutoff for potential [A]?'
+c	read*,cutt
+	cutt = 10
 	write(3,99)cutt
 99	format('cutoff dist.[A]:',f15.3)
 	cutt=cutt/ams
@@ -375,12 +380,14 @@ c hisn - histogram of neighbor numbers
 c locate nearest neighbors
 	do 1 nm=1,nmol-1
 	   do 2 nmm=nm+1,nmol
-	    	do 10 k=1,3
-		   ve(k)=xlat(nm,k,1)-xlat(nmm,k,1)
-c		   if(k.eq.3) go to 10
-		   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-		   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
-10	  	continue
+c	#####CALLING PBC!#########
+		call pbc (xlat, nmoll, side, ve, 0, 0)
+c	    	do 10 k=1,3
+c		   ve(k)=xlat(nm,k,1)-xlat(nmm,k,1)
+cc		   if(k.eq.3) go to 10
+c		   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
+c		   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+c10	  	continue
 	   	d2=ve(1)**2+ve(2)**2+ve(3)**2
 	        if(d2.lt.ctn2)then
 c		   if(nm.eq.1)then
@@ -493,17 +500,24 @@ c to compare to new structures & verify if new struct. obtained
 c dip is dipole vector, last component 4 is abs size
 c dipole calculated as vectorial sum in units of molecular
 c dipole, set to unity along the bisector
-	print*,'dseed?'
-	read*,dseed
+c	print*,'dseed?'
+c	read*,dseed
+	dseed = 1d10
 	write(3,*)'dseed=',dseed
-	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
-	read*,nimp,nmcma
-	print*,'# max tries?'
-	read*,maxt
-	print*,'after how many futile attempts to stop?'
-	read*,isto
-	print*,'e-,dip. identity criterions?'
-	read*,cri1,cri2
+c	print*,'# improvement rounds, #steps in round? (eg~1000,10000)'
+c	read*,nimp,nmcma
+	nimp = 1000
+	nmcma = 10000
+c	print*,'# max tries?'
+c	read*,maxt
+	maxt = 400
+c	print*,'after how many futile attempts to stop?'
+c	read*,isto
+	isto = 400
+c	print*,'e-,dip. identity criterions?'
+c	read*,cri1,cri2
+	cri1 = 1d-4
+	cri2 = 1d-4
 	write(3,*)'# improvement rounds:',nimp
 	write(3,*)'# mc steps in a round',nmcma
 	write(3,*)'stopping criterion: futile tries:',isto
@@ -1125,10 +1139,10 @@ c found throughout the code so that it may be easily changed later.
 	end if
 
 	print*, 'PBC has nmoll: ', nmoll
-	print*, 'PBC has i1, i2: ', i1, i2
+	print*, 'PBC has i1, i2: ', i1op, i2op
 
 	do k=1,3
-	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
+	   ve(k)=xlat(nm,i1op+k,1)-xlat(nmm,i2op+k,1)
 	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
 	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
 	continue
