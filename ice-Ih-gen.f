@@ -323,6 +323,7 @@ c =2 include hydrogens
 	dimension ve(3)
 	character*5 atoc(3),wat,car
 	data atoc,wat,car/'    O','    H','    H','  H2O','    C'/
+	print*, 'Entering trans, writing title'
 	write(99,777)
 777	format('* title')
 	write(99,778)
@@ -388,8 +389,7 @@ c locate nearest neighbors
 	    	do 10 k=1,3
 		   ve(k)=xlat(nm,k,1)-xlat(nmm,k,1)
 c		   if(k.eq.3) go to 10
-		   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-		   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+		   call pbc(k)
 10	  	continue
 	   	d2=ve(1)**2+ve(2)**2+ve(3)**2
 	        if(d2.lt.ctn2)then
@@ -402,6 +402,7 @@ c			write(98,*)(xlat(nm,k,1)*ams,k=1,3)
 c			write(98,*)(xlat(nmm,k,1)*ams,k=1,3)
 c		   end if
 		   nne(nm)=nne(nm)+1
+c		######## HERE IS AN ISSUE #################
 		   if(nne(nm).gt.nemax)then
 		      print*,'near neigh dim. overrun'
 		      print*,nm,nne(nm)
@@ -862,8 +863,7 @@ c min. image distance between atoms
 	i2=(k2-1)*3
 	do 10 k=1,3
 	   ve(k)=xlat(nm,i1+k,1)-xlat(nmm,i2+k,1)
-	   if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
-	   if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+	   call pbc(k)
 10	continue
 	d=sqrt(ve(1)**2+ve(2)**2+ve(3)**2)
 	return
@@ -1122,3 +1122,17 @@ c rescale to represent correct dipole-dipole interaction
 c	ep=ep/nmol
 	return
 	end
+
+c This subroutine replaces the periodic boundary condition logic
+c found throughout the code so that it may be easily changed later.	
+	subroutine pbc(k)
+	parameter (nmoll=4000,natmm=6000,ndimm=18000)
+	parameter(nemax=4)
+	common/parambo/side(3)
+	common/xnnneigs/ ve(3),xnei(nmoll,nemax,3)
+c	Dimensions have to be declared again if arrays are being passed in.
+	if(ve(k).lt.-side(k)*0.5d0)ve(k)=ve(k)+side(k)
+	if(ve(k).gt.side(k)*0.5d0)ve(k)=ve(k)-side(k)
+	return
+	end
+
